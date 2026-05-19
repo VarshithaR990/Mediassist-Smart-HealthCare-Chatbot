@@ -13,7 +13,7 @@ st.set_page_config(
 # Make sure your working API key is pasted inside these quotes!
 # 2. Securely Initialize the Gemini Client from Streamlit Secrets
 if "API_KEY" in st.secrets:
-    api_key = st.secrets["AIzaSyDfwoBYbtvWtIDrTX0fnh3XFyak7AbV05A"]
+    api_key = st.secrets["API_KEY"]
 else:
     st.error("API Key missing! Please add it to your Streamlit Advanced Settings.")
     st.stop()
