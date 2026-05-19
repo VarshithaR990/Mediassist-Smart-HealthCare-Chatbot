@@ -11,8 +11,14 @@ st.set_page_config(
 
 # 2. Securely Initialize the Gemini Client
 # Make sure your working API key is pasted inside these quotes!
-API_KEY =  "AIzaSyAQ1lap3OJvQMHL_UuxL5skmjwibM7WIuk"
-client = genai.Client(api_key=API_KEY)
+# 2. Securely Initialize the Gemini Client from Streamlit Secrets
+if "API_KEY" in st.secrets:
+    api_key = st.secrets["API_KEY"]
+else:
+    st.error("API Key missing! Please add it to your Streamlit Advanced Settings.")
+    st.stop()
+
+client = genai.Client(api_key=api_key)
 
 # 3. System Prompt (Enforces a short, one-line disclaimer at the very end)
 SYSTEM_PROMPT = (
